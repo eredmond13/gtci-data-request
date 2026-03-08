@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Data Request — Global Talent Competitiveness Index</title>
+<title>Data Request - Global Talent Competitiveness Index</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -86,14 +86,14 @@ html, body {
   margin-bottom: 12px;
 }
 .hero-subtitle {
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 600;
   color: var(--purple);
   margin-bottom: 16px;
 }
 .hero-desc {
-  font-size: 14px;
-  color: var(--muted);
+  font-size: 16px;
+  color: #444;
   line-height: 1.7;
 }
 .hero-right .circle-large {
@@ -145,7 +145,7 @@ html, body {
   border-radius: 12px;
   padding: 16px 22px;
   margin-bottom: 28px;
-  font-size: 13.5px;
+  font-size: 15.5px;
   line-height: 1.65;
   color: #444;
 }
@@ -369,7 +369,7 @@ html, body {
     <div class="hero-eyebrow">Data Access</div>
     <h1>Global Talent<br>Competitiveness<br>Index</h1>
     <div class="hero-subtitle">Request Access to the GTCI Dataset</div>
-    <div class="hero-desc">The GTCI dataset is available for legitimate academic and policy-making research. Complete the form below — all requests are reviewed by the GTCI team.</div>
+    <div class="hero-desc">The GTCI dataset is available for legitimate academic and policy-making research. Complete the form below. All requests are reviewed by the GTCI team.</div>
   </div>
   <div class="hero-right">
     <div class="circle-large">
@@ -421,7 +421,10 @@ html, body {
           <label class="radio-pill"><input type="radio" name="sector" value="academia"> Academia</label>
           <label class="radio-pill"><input type="radio" name="sector" value="government"> Government</label>
           <label class="radio-pill"><input type="radio" name="sector" value="business"> Business</label>
-          <label class="radio-pill"><input type="radio" name="sector" value="civil"> Civil Society</label>
+          <label class="radio-pill"><input type="radio" name="sector" value="other"> Other</label>
+        </div>
+        <div class="cond" id="sector-other" style="margin-top:10px;">
+          <input type="text" placeholder="Please describe your sector or affiliation">
         </div>
       </div>
     </div>
@@ -473,7 +476,7 @@ html, body {
 
       <!-- Academic conditional -->
       <div class="cond" id="ca">
-        <div class="cond-title">Academic Research — Supporting Documentation</div>
+        <div class="cond-title">Academic Research: Supporting Documentation</div>
         <div class="cond-desc">
           Please upload a <strong>1–2 page study outline</strong> covering: research background, supervisor(s), and intended publication channels. Your submission will be reviewed by the GTCI team. By submitting, you commit to sharing all resulting working papers and publications with the GTCI team.
         </div>
@@ -495,7 +498,7 @@ html, body {
 
       <!-- Policy conditional -->
       <div class="cond" id="cp">
-        <div class="cond-title">Policy-Making Research — Supporting Documentation</div>
+        <div class="cond-title">Policy-Making Research: Supporting Documentation</div>
         <div class="cond-desc">
           Please provide the <strong>policy issues to be investigated</strong> and the <strong>names and titles of key sponsors</strong> within your agency. You may also upload a supporting document. By submitting, you commit to sharing a summary of policy implications upon completion.
         </div>
@@ -525,7 +528,7 @@ html, body {
 
       <!-- Other conditional -->
       <div class="cond" id="co">
-        <div class="cond-title">Other Purpose — Additional Details</div>
+        <div class="cond-title">Other Purpose: Additional Details</div>
         <div class="cond-desc">Please describe how the GTCI data will be used and provide any supporting context.</div>
         <div class="field">
           <label>Please Describe the Purpose of Your Request <span class="req">*</span></label>
@@ -584,6 +587,12 @@ html, body {
 </footer>
 
 <script>
+  document.querySelectorAll('input[name="sector"]').forEach(r => {
+    r.addEventListener('change', () => {
+      document.getElementById('sector-other').classList.toggle('on', r.value === 'other');
+    });
+  });
+
   document.querySelectorAll('input[name="sponsored"]').forEach(r => {
     r.addEventListener('change', () => {
       document.getElementById('cs').classList.toggle('on', r.value === 'yes');
